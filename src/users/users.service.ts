@@ -6,18 +6,18 @@ import { User } from './schemas/user.schema';
 
 @Injectable()
 export class UsersService {
-    constructor(@InjectModel('User') private readonly userModel: Model<User>) {}
+  constructor(@InjectModel('User') private readonly userModel: Model<User>) { }
 
-    async findAll(): Promise<IUser[]> {
-        return await this.userModel.find()
-    }
+  async findAll(): Promise<IUser[]> {
+    return await this.userModel.find()
+  }
 
-    async findOne(id: string): Promise<IUser> {
-        return await this.userModel.findOne({ _id: id });
-    }
+  async findOne(id: string): Promise<IUser> {
+    return await this.userModel.findOne({ _id: id });
+  }
 
-    async create(user: IUser): Promise<IUser> {
-        const newUser = new this.userModel(user);
-        return await newUser.save();
-    }
+  async create(user: IUser): Promise<IUser> {
+    const newUser = new this.userModel(user);
+    return await newUser.save();
+  }
 }
